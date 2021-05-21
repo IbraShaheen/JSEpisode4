@@ -10,7 +10,7 @@ const books = require("./books.json");
  ****************************************************************/
 function getBookById(bookId, books) {
   // Your code goes here
-  return books.find(bk=> bk["id"]===bookId);
+  return books.find((bk) => bk["id"] === bookId);
 }
 //console.log(getBookById(12, books));
 /**************************************************************
@@ -22,9 +22,10 @@ function getBookById(bookId, books) {
  ****************************************************************/
 function getAuthorByName(authorName, authors) {
   // Your code goes here
-  
 
-  return authors.find(author=> author["name"].toUpperCase() === authorName.toUpperCase())
+  return authors.find(
+    (author) => author["name"].toUpperCase() === authorName.toUpperCase()
+  );
 }
 //console.log(getAuthorByName("J.K. Rowling", authors));
 
@@ -36,7 +37,9 @@ function getAuthorByName(authorName, authors) {
  ****************************************************************/
 function bookCountsByAuthor(authors) {
   // Your code goes here
- return authors.map(author=> `author: ${author.name}, bookCount: ${author.books.length}`);
+  return authors.map(
+    (author) => `author: ${author.name}, bookCount: ${author.books.length}`
+  );
 }
 
 //console.log(bookCountsByAuthor(authors));
@@ -49,10 +52,9 @@ function bookCountsByAuthor(authors) {
  *    { <COLOR>: [<BOOK_TITLES>] }
  ****************************************************************/
 function booksByColor(books) {
-
   let colors = {};
-  colors = books.map(book => `${book.color}: ${book.title}`)
- return colors;
+  colors = books.map((book) => `${book.color}: ${book.title}`);
+  return colors;
 }
 //console.log(booksByColor(books));
 
@@ -65,6 +67,7 @@ function booksByColor(books) {
  *    ["The Hitchhikers Guide", "The Meaning of Liff"]
  ****************************************************************/
 function titlesByAuthorName(authorName, authors, books) {
+  
   // Your code goes here
 }
 // console.log(titlesByAuthorName("George R.R. Martin", authors, books));
