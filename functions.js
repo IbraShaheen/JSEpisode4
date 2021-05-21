@@ -10,9 +10,9 @@ const books = require("./books.json");
  ****************************************************************/
 function getBookById(bookId, books) {
   // Your code goes here
+  return books.find(bk=> bk["id"]===bookId);
 }
-// console.log(getBookById(12, books));
-
+//console.log(getBookById(12, books));
 /**************************************************************
  * getAuthorByName(authorName, authors):
  * - receives an authorName
@@ -22,8 +22,11 @@ function getBookById(bookId, books) {
  ****************************************************************/
 function getAuthorByName(authorName, authors) {
   // Your code goes here
+  
+
+  return authors.find(author=> author["name"].toUpperCase() === authorName.toUpperCase())
 }
-// console.log(getAuthorByName("J.K. Rowling", authors));
+//console.log(getAuthorByName("J.K. Rowling", authors));
 
 /**************************************************************
  * bookCountsByAuthor(authors):
@@ -33,8 +36,10 @@ function getAuthorByName(authorName, authors) {
  ****************************************************************/
 function bookCountsByAuthor(authors) {
   // Your code goes here
+ return authors.map(author=> `author: ${author.name}, bookCount: ${author.books.length}`);
 }
-// console.log(bookCountsByAuthor(authors));
+
+//console.log(bookCountsByAuthor(authors));
 
 /**************************************************************
  * booksByColor(books):
@@ -44,13 +49,12 @@ function bookCountsByAuthor(authors) {
  *    { <COLOR>: [<BOOK_TITLES>] }
  ****************************************************************/
 function booksByColor(books) {
-  const colors = {};
 
-  // Your code goes here
-
-  return colors;
+  let colors = {};
+  colors = books.map(book => `${book.color}: ${book.title}`)
+ return colors;
 }
-// console.log(booksByColor(books));
+//console.log(booksByColor(books));
 
 /**************************************************************
  * titlesByAuthorName(authorName, authors, books):
