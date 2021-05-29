@@ -57,7 +57,7 @@ function bookCountsByAuthor(authors) {
  ****************************************************************/
 function booksByColor(books) {
   //   let colors = {};
-  //   //colors = books.map((book) => `${book.color}: ${book.title}`);
+//colors = books.map((book) => `${book.color}: ${book.title}`);
   //   colors = books.map((book) => `${book.color}: ${book.title}`);
   //   return !colors;
 
@@ -136,10 +136,33 @@ function mostProlificAuthor(authors) {
  *
  * BONUS: REMOVE DUPLICATE BOOKS
  ****************************************************************/
-function relatedBooks(bookId, authors, books) {
-  //   // Your code goes here
-}
+//function relatedBooks(bookId, authors, books) {}
+ // Your code goes here
+  // let b = books.find((book) => book.id === bookId);
+  // let titles;
+  // let authorsBooks;
 
+  // if (b.authors.length > 1) {
+  //   for (let i = 0; i < book.authors.length; i++) {
+  //     authorsBooks = books.filter((b) => b.authors[i] === b.authors[i]);
+  //   }
+  // } else {
+  //   authorsBooks = books.filter((b) => b.authors[0] === b.authors[0]);
+  // }
+  // titles = authorsBooks.map((b) => b.title);
+  // return titles;
+
+  function relatedBooks(bookId, authors, books) {
+    const book = getBookById(bookId, books);
+    let titles = [];
+  
+    book.authors.forEach(
+      author =>
+        (titles = titles.concat(titlesByAuthorName(author.name, authors, books)))
+    );
+ 
+    return titles;
+    }
 // console.log(relatedBooks(50, authors, books));
 
 /**************************************************************
@@ -150,10 +173,13 @@ function relatedBooks(bookId, authors, books) {
  ****************************************************************/
  function friendliestAuthor(authors) {
   // Your code goes here
- let number = authors.map(author=> author.books.length);
- let long = Math.max(...number);
- let n = authors.filter(author=> author.books.length===long);
- return ((n.map(nn=> nn.name)).slice(0,-1)).join();
+  let number = authors.map((author) => author.books.length);
+  let long = Math.max(...number);
+  let n = authors.filter((author) => author.books.length === long);
+  return n
+    .map((nn) => nn.name)
+    .slice(0, -1)
+    .join();
 }
 // console.log(friendliestAuthor(authors));
 
